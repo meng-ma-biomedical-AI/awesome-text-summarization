@@ -1,3 +1,28 @@
+### Extractive Text Summarization
+1. Shashi Narayan, Nikos Papasarantopoulos, Mirella Lapata, Shay B. Cohen. [Neural Extractive Summarization with Side Information](https://arxiv.org/abs/1704.04530). 2017.
+
+### Abstractive Text Summarization
+1. Alexander M. Rush, Sumit Chopra, Jason Weston. [A Neural Attention Model for Abstractive Sentence Summarization](https://arxiv.org/abs/1509.00685). EMNLP, 2015. The source code in LUA Torch7 is [NAMAS](https://github.com/facebook/NAMAS).
+   * They use sequence-to-sequence encoder-decoder LSTM with attention.
+   * Ihey use the first sentence of a document. The source document is quite small (about 1 paragraph or ~500 words in the training dataset of Gigaword) and the produced output is also very short (about 75 characters). It remains an open challenge to scale up these limits - to produce longer summaries over multi-paragraph text input (even good LSTM models with attention models fall victim to vanishing gradients when the input sequences become longer than a few hundred items).
+   * The evaluation method used for automatic summarization has traditionally been the ROUGE metric - which has been shown to correlate well with human judgment of summary quality, but also has a known tendency to encourage "extractive" summarization - so that using ROUGE as a target metric to optimize will lead a summarizer towards a copy-paste behavior of the input instead of the hoped-for reformulation type of summaries.
+1. Peter Liu and Xin Pan. [Sequence-to-Sequence with Attention Model for Text Summarization](https://research.googleblog.com/2016/08/text-summarization-with-tensorflow.html). 2016. The source code in Python is [textsum](https://github.com/tensorflow/models/tree/master/textsum).
+   * They use sequence-to-sequence encoder-decoder LSTM with attention and bidirectional neural net.
+   * They use the first 2 sentences of a document with a limit at 120 words.
+   * The scores achieved by Google’s *textsum* are 42.57 ROUGE-1 and 23.13 ROUGE-2.
+1. Ramesh Nallapati, Bowen Zhou, Cicero Nogueira dos santos, Caglar Gulcehre, Bing Xiang. [Abstractive Text Summarization Using Sequence-to-Sequence RNNs and Beyond](https://arxiv.org/abs/1602.06023). 2016.
+   * They use GRU with attention and bidirectional neural net.
+   * They use the first 2 sentences of a documnet with a limit at 120 words.
+   * They use the [Large vocabulary trick (LVT)](https://arxiv.org/abs/1412.2007) of Jean et al. 2014, which means when you decode, use only the words that appear in the source - this reduces perplexity. But then you lose the capability to do "abstractive" summary. So they do "vocabulary expansion" by adding a layer of "word2vec nearest neighbors" to the words in the input.
+   * Feature rich encoding - they add TF*IDF and Named Entity types to the word embeddings (concatenated) to the encodings of the words - this adds to the encoding dimensions that reflect "importance" of the words.
+   * The most interesting of all is what they call the "Switching Generator/Pointer" layer. In the decoder, they add a layer that decides to either generate a new word based on the context / previously generated word (usual decoder) or copy a word from the input (that is - add a pointer to the input). They learn when to do Generate vs. Pointer and when it is a Pointer which word of the input to Point to.
+1. Konstantin Lopyrev. [Generating News Headlines with Recurrent Neural Networks](https://arxiv.org/abs/1512.01712). 2015. The source code in Python is [headlines](https://github.com/udibr/headlines).
+1. Sumit Chopra, Alexander M. Rush and Michael Auli. [Abstractive Sentence Summarization with Attentive Recurrent Neural Networks](http://harvardnlp.github.io/papers/naacl16_summary.pdf). NAACL, 2016.
+1. Jianpeng Cheng, Mirella Lapata. [Neural Summarization by Extracting Sentences and Words](https://arxiv.org/abs/1603.07252)". ACL, 2016.
+   * This paper use attention as a mechanism for identifying the best sentences to extract, and then go beyond that to generate an abstractive summary.
+1. Romain Paulus, Caiming Xiong, Richard Socher. [A Deep Reinforced Model for Abstractive Summarization](https://metamind.io/static/pdf/deep-reinforced-model-arxiv-v1.pdf). 2017.
+1. Shibhansh Dohare, Harish Karnick. [Text Summarization using Abstract Meaning Representation](https://arxiv.org/abs/1706.01678). 	arXiv:1706.01678, 2017.
+
 ### Text Summarization
   - Ryang, Seonggi, and Takeshi Abekawa. "[Framework of automatic text summarization using reinforcement learning](http://dl.acm.org/citation.cfm?id=2390980)." In Proceedings of the 2012 Joint Conference on Empirical Methods in Natural Language Processing and Computational Natural Language Learning, pp. 256-265. Association for Computational Linguistics, 2012. [not neural-based methods]
   - King, Ben, Rahul Jha, Tyler Johnson, Vaishnavi Sundararajan, and Clayton Scott. "[Experiments in Automatic Text Summarization Using Deep Neural Networks](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.459.8775&rep=rep1&type=pdf)." Machine Learning (2011).
@@ -14,14 +39,9 @@
   - Liu, He, Hongliang Yu, and Zhi-Hong Deng. "[Multi-Document Summarization Based on Two-Level Sparse Representation Model](http://www.cis.pku.edu.cn/faculty/system/dengzhihong/papers/AAAI%202015_Multi-Document%20Summarization%20Based%20on%20Two-Level%20Sparse%20Representation%20Model.pdf)." In Twenty-Ninth AAAI Conference on Artificial Intelligence. 2015.
   - Jin-ge Yao, Xiaojun Wan, Jianguo Xiao. "[Compressive Document Summarization via Sparse Optimization](http://ijcai.org/Proceedings/15/Papers/198.pdf)." IJCAI 2015
   - Piji Li, Lidong Bing, Wai Lam, Hang Li, and Yi Liao. "[Reader-Aware Multi-Document Summarization via Sparse Coding](http://arxiv.org/abs/1504.07324)." IJCAI 2015.
-  - Lopyrev, Konstantin. "[Generating News Headlines with Recurrent Neural Networks](http://arxiv.org/abs/1512.01712)." arXiv preprint arXiv:1512.01712 (2015). [The first paragraph as document.]
-  - Alexander M. Rush, Sumit Chopra, Jason Weston. "[A Neural Attention Model for Abstractive Sentence Summarization](http://arxiv.org/abs/1509.00685)." EMNLP 2015. [sentence compression]
   - Hu, Baotian, Qingcai Chen, and Fangze Zhu. "[LCSTS: a large scale chinese short text summarization dataset](http://arxiv.org/abs/1506.05865)." arXiv preprint arXiv:1506.05865 (2015).
   - Gulcehre, Caglar, Sungjin Ahn, Ramesh Nallapati, Bowen Zhou, and Yoshua Bengio. "[Pointing the Unknown Words](http://arxiv.org/abs/1603.08148)." arXiv preprint arXiv:1603.08148 (2016).
-  - Nallapati, Ramesh, Bing Xiang, and Bowen Zhou. "[Abstractive Text Summarization Using Sequence-to-Sequence RNNs and Beyond](http://arxiv.org/abs/1602.06023)." arXiv preprint arXiv:1602.06023 (2016). [sentence compression]
-  - Sumit Chopra, Alexander M. Rush and Michael Auli. "[Abstractive Sentence Summarization with Attentive Recurrent Neural Networks](http://harvardnlp.github.io/papers/naacl16_summary.pdf)" NAACL 2016.
   - Jiatao Gu, Zhengdong Lu, Hang Li, Victor O.K. Li. "[Incorporating Copying Mechanism in Sequence-to-Sequence Learning](http://arxiv.org/abs/1603.06393)." ACL. (2016)
-  - Jianpeng Cheng, Mirella Lapata. "[Neural Summarization by Extracting Sentences and Words](http://arxiv.org/abs/1603.07252)". ACL. (2016)
   - Zhang, Jianmin, Jin-ge Yao, and Xiaojun Wan. "[Toward constructing sports news from live text commentary](http://www.icst.pku.edu.cn/lcwm/wanxj/files/acl16_sports.pdf)." In Proceedings of ACL. 2016.
   - Ziqiang Cao, Wenjie Li, Sujian Li, Furu Wei. "[AttSum: Joint Learning of Focusing and Summarization with Neural Attention](http://arxiv.org/abs/1604.00125)".  arXiv:1604.00125 (2016)
   - Ayana, Shiqi Shen, Zhiyuan Liu, Maosong Sun. "[Neural Headline Generation with Sentence-wise Optimization](http://arxiv.org/abs/1604.01904)". arXiv:1604.01904 (2016)
@@ -41,15 +61,12 @@
   - Abigail See, Peter J. Liu and Christopher D. Manning. [Get To The Point: Summarization with Pointer-Generator Networks](https://arxiv.org/abs/1704.04368). ACL, 2017.
   - Qingyu Zhou, Nan Yang, Furu Wei and Ming Zhou. [Selective Encoding for Abstractive Sentence Summarization](https://arxiv.org/abs/1704.07073). ACL, 2017
   - Maxime Peyrard and Judith Eckle-Kohler. [Supervised Learning of Automatic Pyramid for Optimization-Based Multi-Document Summarization](). ACL, 2017.
-  - Shashi Narayan, Nikos Papasarantopoulos, Mirella Lapata, Shay B. Cohen. "[Neural Extractive Summarization with Side Information](https://arxiv.org/abs/1704.04530)." arXiv preprint arXiv:1704.04530 (2017).
-  - Romain Paulus, Caiming Xiong, Richard Socher. "[A Deep Reinforced Model for Abstractive Summarization](https://metamind.io/static/pdf/deep-reinforced-model-arxiv-v1.pdf)." (2017).
-  - Shibhansh Dohare, Harish Karnick. "[Text Summarization using Abstract Meaning Representation](https://arxiv.org/abs/1706.01678)." 	arXiv:1706.01678 (2017).
- 
+
 ### Opinion Summarization
-  1. Ganesan, Kavita A., Zhai ChengXiang, and Han Jiawei. [Opinosis: A Graph Based Approach to Abstractive Summarization of Highly Redundant Opinions](http://kavita-ganesan.com/opinosis). Proceedings of the 23rd International Conference on Computational Linguistics (COLING '10), 2010. 
-  1. Wu, Haibing, Yiwei Gu, Shangdi Sun, and Xiaodong Gu. [Aspect-based Opinion Summarization with Convolutional Neural Networks](http://arxiv.org/abs/1511.09128). arXiv preprint arXiv:1511.09128 (2015).
-  1. Irsoy, Ozan, and Claire Cardie. [Opinion Mining with Deep Recurrent Neural Networks](http://anthology.aclweb.org/D/D14/D14-1080.pdf). In EMNLP, pp. 720-728. 2014.
-  1. Piji Li, Zihao Wang, Zhaochun Ren, Lidong Bing, Wai Lam. [Neural Rating Regression with Abstractive Tips Generation for Recommendation](). In SIGIR, pp xx-xx. 2017.
+1. Ganesan, Kavita A., Zhai ChengXiang, and Han Jiawei. [Opinosis: A Graph Based Approach to Abstractive Summarization of Highly Redundant Opinions](http://kavita-ganesan.com/opinosis). Proceedings of the 23rd International Conference on Computational Linguistics (COLING '10), 2010.
+1. Wu, Haibing, Yiwei Gu, Shangdi Sun, and Xiaodong Gu. [Aspect-based Opinion Summarization with Convolutional Neural Networks](http://arxiv.org/abs/1511.09128). arXiv preprint arXiv:1511.09128 (2015).
+1. Irsoy, Ozan, and Claire Cardie. [Opinion Mining with Deep Recurrent Neural Networks](http://anthology.aclweb.org/D/D14/D14-1080.pdf). In EMNLP, pp. 720-728. 2014.
+1. Piji Li, Zihao Wang, Zhaochun Ren, Lidong Bing, Wai Lam. [Neural Rating Regression with Abstractive Tips Generation for Recommendation](). In SIGIR, pp xx-xx. 2017.
 
 ### Reading Comprehension
  - Hermann, Karl Moritz, Tomas Kocisky, Edward Grefenstette, Lasse Espeholt, Will Kay, Mustafa Suleyman, and Phil Blunsom. "[Teaching machines to read and comprehend](http://papers.nips.cc/paper/5945-teaching-machines-to-read-and-comprehend)." In Advances in Neural Information Processing Systems, pp. 1693-1701. 2015.
@@ -64,7 +81,6 @@
  - Daniel Hewlett, Alexandre Lacoste, Llion Jones, Illia Polosukhin, Andrew Fandrianto, Jay Han, Matthew Kelcey and David Berthelot. "[WIKIREADING: A Novel Large-scale Language Understanding Task over Wikipedia](http://www.aclweb.org/anthology/P/P16/P16-1145.pdf)." ACL (2016). pp. 1535-1545.
   - Minghao Hu, Yuxing Peng, Xipeng Qiu. "[Mnemonic Reader for Machine Comprehension](https://arxiv.org/abs/1705.02798)." arXiv:1705.02798 (2017).
   - Wenhui Wang, Nan Yang, Furu Wei, Baobao Chang and Ming Zhou. "[R-NET: Machine Reading Comprehension with Self-matching Networks](https://www.microsoft.com/en-us/research/publication/mcr/)." ACL (2017).
-  
 
 ### Sentence Modelling
   - Kalchbrenner, Nal, Edward Grefenstette, and Phil Blunsom. "[A convolutional neural network for modelling sentences](http://arxiv.org/abs/1404.2188)." arXiv preprint arXiv:1404.2188 (2014).
