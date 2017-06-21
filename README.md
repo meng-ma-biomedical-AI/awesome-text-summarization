@@ -1,5 +1,50 @@
+### Corpus
+1. [Opinosis dataset](http://kavita-ganesan.com/opinosis-opinion-dataset) contains 51 articles. Each article is about a product’s feature, like iPod’s Battery Life, etc. and is a collection of reviews by customers who purchased that product. Each article in the dataset has 5 manually written “gold” summaries. Usually the 5 gold summaries are different but they can also be the same text repeated 5 times.
+1. [DUC](http://duc.nist.gov/)
+1. [English Gigaword](https://catalog.ldc.upenn.edu/LDC2003T05): English Gigaword was produced by Linguistic Data Consortium (LDC).
+1. [CNN and Daily Mail](http://cs.nyu.edu/~kcho/DMQA/) or [github](https://github.com/deepmind/rc-data).
+   * *CNN* contains the documents and accompanying questions from the news articles of CNN. There are approximately 90k documents and 380k questions.
+   * *Daily Mail* contains the documents and accompanying questions from the news articles of Daily Mail. There are approximately 197k documents and 879k questions.
+1. [Processed CNN and Daily Mail](https://github.com/danqi/rc-cnn-dailymail) datasets are just simply concatenation of all data instances and keeping document, question and answer only for their inputs.
+1. [Large Scale Chinese Short Text Summarization Dataset（LCSTS）](http://icrc.hitsz.edu.cn/Article/show/139.html): This corpus is constructed from the Chinese microblogging website SinaWeibo. It consists of over 2 million real Chinese short texts with short summaries given by the writer of each text.
+
+### Text Summarization Software
+1. [sumy](https://github.com/miso-belica/sumy) is a simple library and command line utility for extracting summary from HTML pages or plain texts. The package also contains simple evaluation framework for text summaries. Implemented summarization methods are *Luhn*, *Edmundson*, *LSA*, *LexRank*, *TextRank*, *SumBasic* and *KL-Sum*.
+
+### Word/Sentence Representation
+1.  [N-Grams](https://lagunita.stanford.edu/c4x/Engineering/CS-224N/asset/slp4.pdf)
+1. Yoshua Bengio, Réjean Ducharme, Pascal Vincent and Christian Jauvin. [A Neural Probabilistic Language Model](http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf). 2003.
+   * They proposed to fight the curse of dimensionality by learning a distributed representation for words which allows each training sentence to inform the model about an exponential number of semantically neighboring sentences.
+
+#### word2vec
+1. [Word2Vec Resources](http://mccormickml.com/2016/04/27/word2vec-resources/): This is a post with links to and descriptions of word2vec tutorials, papers, and implementations.
+
 ### Extractive Text Summarization
 1. H. P. Luhn. [The automatic creation of literature abstracts](http://courses.ischool.berkeley.edu/i256/f06/papers/luhn58.pdf). IBM Journal of Research and Development, 1958.
+   * This algorithm ranks sentences for summarization extracts by considering “significant” words, which are frequently occurring words in a document, and the linear distance between these words due to non-significant words.
+1. H. P. Edmundson. [New Methods in Automatic Extracting](http://courses.ischool.berkeley.edu/i256/f06/papers/edmonson69.pdf). Journal of the Association for Computing Machinery, 1969.
+1. Rada Mihalcea and Paul Tarau. [TextRank: Bringing Order into Texts](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf). ACL, 2004. The source code in Python is [pytextrank](https://github.com/ceteri/pytextrank). `pytextrank` works in four stages, each feeding its output to the next:
+   * Part-of-Speech Tagging and lemmatization are performed for every sentence in the document.
+   * Key phrases are extracted along with their counts, and are normalized.
+   * Calculates a score for each sentence by approximating jaccard distance between the sentence and key phrases.
+   * Summarizes the document based on most significant sentences and key phrases.
+1. Federico Barrios, Federico López, Luis Argerich and Rosa Wachenchauzer. [Variations of the Similarity Function of TextRank for Automated Summarization](https://arxiv.org/abs/1602.03606). 2016. The source code in Python is [gensim.summarization](http://radimrehurek.com/gensim/). Gensim's summarization only works for English for now, because the text is pre-processed so that stop words are removed and the words are stemmed, and these processes are language-dependent. TextRank works as follows:
+   * Pre-process the text: remove stop words and stem the remaining words.
+   * Create a graph where vertices are sentences.
+   * Connect every sentence to every other sentence by an edge. The weight of the edge is how similar the two sentences are.
+   * Run the PageRank algorithm on the graph.
+   * Pick the vertices(sentences) with the highest PageRank score.
+1. [TextTeaser](https://github.com/MojoJolo/textteaser) uses basic summarization features and build from it. Those features are:
+   * Title feature is used to score the sentence with the regards to the title. It is calculated as the count of words which are common to title of the document and sentence.
+   * Sentence length is scored depends on how many words are in the sentence. TextTeaser defined a constant “ideal” (with value 20), which represents the ideal length of the summary, in terms of number of words. Sentence length is calculated as a normalized distance from this value.
+   * Sentence position is where the sentence is located. I learned that introduction and conclusion will have higher score for this feature.
+   * Keyword frequency is just the frequency of the words used in the whole text in the bag-of-words model (after removing stop words).
+1. Güneş Erkan and Dragomir R. Radev. [LexRank: Graph-based Lexical Centrality as Salience in Text Summarization](https://www.cs.cmu.edu/afs/cs/project/jair/pub/volume22/erkan04a-html/erkan04a.html). 2004.
+   * LexRank uses IDF-modified Cosine as the similarity measure between two sentences. This similarity is used as weight of the graph edge between two sentences. LexRank also incorporates an intelligent post-processing step which makes sure that top sentences chosen for the summary are not too similar to each other.
+1. [Latent Semantic Analysis(LSA) Tutorial](https://technowiki.wordpress.com/2011/08/27/latent-semantic-analysis-lsa-tutorial/).
+1. Josef Steinberger and Karel Jezek. [Using Latent Semantic Analysis in Text Summarization and Summary Evaluation](http://www.kiv.zcu.cz/~jstein/publikace/isim2004.pdf). Proc. ISIM’04, 2004.
+1. Josef Steinberger, Massimo Poesio, Mijail A Kabadjov and Karel Ježek. [Two uses of anaphora resolution in summarization](http://www.sensei-conversation.eu/wp-content/uploads/files/IPMpaper_official.pdf). Information Processing & Management, 2007.
+1. Josef Steinberger and Karel Ježek. [Text summarization and singular value decomposition](https://www.researchgate.net/profile/Karel_Jezek2/publication/226424326_Text_Summarization_and_Singular_Value_Decomposition/links/57233c1308ae586b21d87e66/Text-Summarization-and-Singular-Value-Decomposition.pdf). International Conference on Advances in Information Systems, 2004.
 1. Ani Nenkova and Kathleen McKeown. [Automatic summarization](https://www.cis.upenn.edu/~nenkova/1500000015-Nenkova.pdf).
 Foundations and Trend in Information Retrieval, 2011. [The slides](https://www.fosteropenscience.eu/sites/default/files/pdf/2932.pdf) are also available.
 1. Shashi Narayan, Nikos Papasarantopoulos, Mirella Lapata, Shay B. Cohen. [Neural Extractive Summarization with Side Information](https://arxiv.org/abs/1704.04530). 2017.
@@ -49,10 +94,12 @@ Foundations and Trend in Information Retrieval, 2011. [The slides](https://www.f
 1. Piji Li, Lidong Bing, Wai Lam, Hang Li, and Yi Liao. "[Reader-Aware Multi-Document Summarization via Sparse Coding](http://arxiv.org/abs/1504.07324)." IJCAI 2015.
 1. Xiaojun Wan, Yansong Feng and Weiwei Sun. [Automatic Text Generation: Research Progress and Future Trends](http://www.icst.pku.edu.cn/lcwm/wanxj/files/TextGenerationSurvey.pdf). Book Chapter in CCF 2014-2015 Annual Report on Computer Science and Technology in China (In Chinese), 2015.
 1. Gulcehre, Caglar, Sungjin Ahn, Ramesh Nallapati, Bowen Zhou, and Yoshua Bengio. "[Pointing the Unknown Words](http://arxiv.org/abs/1603.08148)." arXiv preprint arXiv:1603.08148 (2016).
-1. Jiatao Gu, Zhengdong Lu, Hang Li, Victor O.K. Li. "[Incorporating Copying Mechanism in Sequence-to-Sequence Learning](http://arxiv.org/abs/1603.06393)." ACL. (2016)
+1. Jiatao Gu, Zhengdong Lu, Hang Li, Victor O.K. Li. [Incorporating Copying Mechanism in Sequence-to-Sequence Learning](https://arxiv.org/abs/1603.06393). ACL. (2016)
+   * They addressed an important problem in sequence-to-sequence (Seq2Seq) learning referred to as copying, in which certain segments in the input sequence are selectively replicated in the output sequence. In this paper, they incorporated copying into neural network-based Seq2Seq learning and propose a new model called CopyNet with encoder-decoder structure. CopyNet can nicely integrate the regular way of word generation in the decoder with the new copying mechanism which can choose sub-sequences in the input sequence and put them at proper places in the output sequence.
 1. Jianmin Zhang, Jin-ge Yao and Xiaojun Wan. [Toward constructing sports news from live text commentary](http://www.icst.pku.edu.cn/lcwm/wanxj/files/acl16_sports.pdf). In Proceedings of ACL, 2016.
 1. Ziqiang Cao, Wenjie Li, Sujian Li, Furu Wei. "[AttSum: Joint Learning of Focusing and Summarization with Neural Attention](http://arxiv.org/abs/1604.00125)".  arXiv:1604.00125 (2016)
-1. Ayana, Shiqi Shen, Zhiyuan Liu, Maosong Sun. "[Neural Headline Generation with Sentence-wise Optimization](http://arxiv.org/abs/1604.01904)". arXiv:1604.01904 (2016)
+1. Ayana, Shiqi Shen, Yu Zhao, Zhiyuan Liu and Maosong Sun. [Neural Headline Generation with Sentence-wise Optimization](https://arxiv.org/abs/1604.01904). 2016.
+1. Ayana, Shiqi Shen, Zhiyuan Liu and Maosong Sun. [Neural Headline Generation with Minimum Risk Training](https://128.84.21.199/abs/1604.01904v1). 2016.
 1. Kikuchi, Yuta, Graham Neubig, Ryohei Sasano, Hiroya Takamura, and Manabu Okumura. "[Controlling Output Length in Neural Encoder-Decoders](https://arxiv.org/abs/1609.09552)." arXiv preprint arXiv:1609.09552 (2016).
 1. Qian Chen, Xiaodan Zhu, Zhenhua Ling, Si Wei and Hui Jiang. "[Distraction-Based Neural Networks for Document Summarization](https://arxiv.org/abs/1610.08462)." IJCAI 2016.
 1. Wang, Lu, and Wang Ling. "[Neural Network-Based Abstract Generation for Opinions and Arguments](http://www.ccs.neu.edu/home/luwang/papers/NAACL2016.pdf)." NAACL 2016.
@@ -86,18 +133,20 @@ Foundations and Trend in Information Retrieval, 2011. [The slides](https://www.f
 1. Chin-Yew Lin and Eduard Hovy. [Automatic Evaluation of Summaries Using N-gram
 Co-Occurrence Statistics](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/naacl2003.pdf). In Proceedings of the Human Technology Conference 2003 (HLT-NAACL-2003).
 1. Chin-Yew Lin. [Rouge: A package for automatic evaluation of summaries](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/was2004.pdf). Workshop on Text Summarization Branches Out, Post-Conference Workshop of ACL 2004.
+1. Kishore Papineni, Salim Roukos, Todd Ward, and Wei-Jing Zhu. [BLEU: a Method for Automatic Evaluation of Machine Translation](http://www.aclweb.org/anthology/P02-1040.pdf).
 
 ### Opinion Summarization
-1. Ganesan, Kavita A., Zhai ChengXiang, and Han Jiawei. [Opinosis: A Graph Based Approach to Abstractive Summarization of Highly Redundant Opinions](http://kavita-ganesan.com/opinosis). Proceedings of the 23rd International Conference on Computational Linguistics (COLING '10), 2010.
-1. Wu, Haibing, Yiwei Gu, Shangdi Sun, and Xiaodong Gu. [Aspect-based Opinion Summarization with Convolutional Neural Networks](http://arxiv.org/abs/1511.09128). arXiv preprint arXiv:1511.09128 (2015).
-1. Irsoy, Ozan, and Claire Cardie. [Opinion Mining with Deep Recurrent Neural Networks](http://anthology.aclweb.org/D/D14/D14-1080.pdf). In EMNLP, pp. 720-728. 2014.
-1. Piji Li, Zihao Wang, Zhaochun Ren, Lidong Bing, Wai Lam. [Neural Rating Regression with Abstractive Tips Generation for Recommendation](). In SIGIR, pp xx-xx. 2017.
+1. Kavita Ganesan, ChengXiang Zhai and Jiawei Han. [Opinosis: A Graph Based Approach to Abstractive Summarization of Highly Redundant Opinions](http://kavita-ganesan.com/opinosis). Proceedings of COLING '10, 2010.
+1. Kavita Ganesan, ChengXiang Zhai and Evelyne Viegas. [Micropinion Generation: An Unsupervised Approach to Generating Ultra-Concise Summaries of Opinions](http://kavita-ganesan.com/micropinion-generation). WWW'12, 2012.
+1. Kavita Ganesan. [Opinion Driven Decision Support System (ODSS)](http://kavita-ganesan.com/phd-thesis). PhD Thesis, University of Illinois at Urbana-Champaign, 2013.
+1. Haibing Wu, Yiwei Gu, Shangdi Sun and Xiaodong Gu. [Aspect-based Opinion Summarization with Convolutional Neural Networks](https://arxiv.org/abs/1511.09128). 2015.
+1. Ozan Irsoy and Claire Cardie. [Opinion Mining with Deep Recurrent Neural Networks](https://www.cs.cornell.edu/~oirsoy/files/emnlp14drnt.pdf). In EMNLP, 2014.
 
 ### Reading Comprehension
-1. Hermann, Karl Moritz, Tomas Kocisky, Edward Grefenstette, Lasse Espeholt, Will Kay, Mustafa Suleyman, and Phil Blunsom. "[Teaching machines to read and comprehend](http://papers.nips.cc/paper/5945-teaching-machines-to-read-and-comprehend)." In Advances in Neural Information Processing Systems, pp. 1693-1701. 2015.
+1. Karl Moritz Hermann, Tomas Kocisky, Edward Grefenstette, Lasse Espeholt, Will Kay, Mustafa Suleyman, and Phil Blunsom. [Teaching machines to read and comprehend](http://papers.nips.cc/paper/5945-teaching-machines-to-read-and-comprehend). NIPS, 2015. The source code in Python is [DeepMind-Teaching-Machines-to-Read-and-Comprehend](https://github.com/thomasmesnard/DeepMind-Teaching-Machines-to-Read-and-Comprehend).
 1. Hill, Felix, Antoine Bordes, Sumit Chopra, and Jason Weston. "[The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations](http://arxiv.org/abs/1511.02301)." arXiv preprint arXiv:1511.02301 (2015).
 1. Kadlec, Rudolf, Martin Schmid, Ondrej Bajgar, and Jan Kleindienst. "[Text Understanding with the Attention Sum Reader Network](http://arxiv.org/abs/1603.01547)." arXiv preprint arXiv:1603.01547 (2016).
-1. Chen, Danqi, Jason Bolton, and Christopher D. Manning. "[A thorough examination of the cnn/daily mail reading comprehension task](http://arxiv.org/abs/1606.02858)." arXiv preprint arXiv:1606.02858 (2016).
+1. Danqi Chen, Jason Bolton and Christopher D. Manning. [A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task](https://arxiv.org/abs/1606.02858). ACL, 2016. The source code in Python is [rc-cnn-dailymail](https://github.com/danqi/rc-cnn-dailymail).
 1. Dhingra, Bhuwan, Hanxiao Liu, William W. Cohen, and Ruslan Salakhutdinov. "[Gated-Attention Readers for Text Comprehension](http://arxiv.org/abs/1606.01549)." arXiv preprint arXiv:1606.01549 (2016).
 1. Sordoni, Alessandro, Phillip Bachman, and Yoshua Bengio. "[Iterative Alternating Neural Attention for Machine Reading](http://arxiv.org/abs/1606.02245)." arXiv preprint arXiv:1606.02245 (2016).
 1. Trischler, Adam, Zheng Ye, Xingdi Yuan, and Kaheer Suleman. "[Natural Language Comprehension with the EpiReader](http://arxiv.org/abs/1606.02270)." arXiv preprint arXiv:1606.02270 (2016).
