@@ -15,14 +15,24 @@
 1.  [N-Grams](https://lagunita.stanford.edu/c4x/Engineering/CS-224N/asset/slp4.pdf)
 1. Yoshua Bengio, Réjean Ducharme, Pascal Vincent and Christian Jauvin. [A Neural Probabilistic Language Model](http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf). 2003.
    * They proposed to fight the curse of dimensionality by learning a distributed representation for words which allows each training sentence to inform the model about an exponential number of semantically neighboring sentences.
+1. Ryan Kiros, Yukun Zhu, Ruslan Salakhutdinov, Richard S. Zemel, Antonio Torralba, Raquel Urtasun and Sanja Fidler. [Skip-Thought Vectors](https://arxiv.org/abs/1506.06726). 2015. The source code in Python is [skip-thoughts](https://github.com/ryankiros/skip-thoughts).
 
 #### word2vec
 1. [Word2Vec Resources](http://mccormickml.com/2016/04/27/word2vec-resources/): This is a post with links to and descriptions of word2vec tutorials, papers, and implementations.
 
 ### Extractive Text Summarization
-1. H. P. Luhn. [The automatic creation of literature abstracts](http://courses.ischool.berkeley.edu/i256/f06/papers/luhn58.pdf). IBM Journal of Research and Development, 1958.
-   * This algorithm ranks sentences for summarization extracts by considering “significant” words, which are frequently occurring words in a document, and the linear distance between these words due to non-significant words.
+1. H. P. Luhn. [The automatic creation of literature abstracts](http://courses.ischool.berkeley.edu/i256/f06/papers/luhn58.pdf). IBM Journal of Research and Development, 1958. Luhn's method is as follows:
+   1. Ignore Stopwords: Common words (known as stopwords) are ignored.
+   1. Determine Top Words: The most often occuring words in the document are counted up.
+   1. Select Top Words: A small number of the top words are selected to be used for scoring.
+   1. Select Top Sentences: Sentences are scored according to how many of the top words they contain. The top four sentences are selected for the summary.
 1. H. P. Edmundson. [New Methods in Automatic Extracting](http://courses.ischool.berkeley.edu/i256/f06/papers/edmonson69.pdf). Journal of the Association for Computing Machinery, 1969.
+1. David M. Blei, Andrew Y. Ng and Michael I. Jordan. [Latent Dirichlet Allocation](http://ai.stanford.edu/~ang/papers/jair03-lda.pdf). Journal of Machine Learning Research, 2003. The source code in Python is [sklearn.decomposition.LatentDirichletAllocation](http://scikit-learn.org/dev/auto_examples/applications/plot_topics_extraction_with_nmf_lda.html). Reimplement Luhn's algorithm, but with topics instead of words and applied to several documents instead of one.
+   1. Train LDA on all products of a certain type (e.g. all the books)
+   1. Treat all the reviews of a particular product as one document, and infer their topic distribution
+   1. Infer the topic distribution for each sentence
+   1. For each topic that dominates the reviews of a product, pick some sentences that are themselves dominated by that topic.
+1. David M. Blei. [Probabilistic Topic Models](http://www.cs.columbia.edu/~blei/papers/Blei2012.pdf). Communications of the ACM, 2012.
 1. Rada Mihalcea and Paul Tarau. [TextRank: Bringing Order into Texts](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf). ACL, 2004. The source code in Python is [pytextrank](https://github.com/ceteri/pytextrank). `pytextrank` works in four stages, each feeding its output to the next:
    * Part-of-Speech Tagging and lemmatization are performed for every sentence in the document.
    * Key phrases are extracted along with their counts, and are normalized.
