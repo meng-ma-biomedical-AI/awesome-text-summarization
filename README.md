@@ -10,6 +10,11 @@
 
 ### Text Summarization Software
 1. [sumy](https://github.com/miso-belica/sumy) is a simple library and command line utility for extracting summary from HTML pages or plain texts. The package also contains simple evaluation framework for text summaries. Implemented summarization methods are *Luhn*, *Edmundson*, *LSA*, *LexRank*, *TextRank*, *SumBasic* and *KL-Sum*.
+1. [TextRank4ZH](https://github.com/letiantian/TextRank4ZH) implements the *TextRank* algorithm to extract key words/phrases and text summarization
+in Chinese. It is written in Python.
+1. [snownlp](https://github.com/isnowfy/snownlp) is python library for processing Chinese text.
+1. [PKUSUMSUM](https://github.com/PKULCWM/PKUSUMSUM) is an integrated toolkit for automatic document summarization. It supports single-document, multi-document and topic-focused multi-document summarizations, and a variety of summarization methods have been implemented in the toolkit. It supports Western languages (e.g. English) and Chinese language.
+1. [fnlp](https://github.com/FudanNLP/fnlp) is a toolkit for Chinese natural language processing.
 
 ### Word/Sentence Representation
 1.  [N-Grams](https://lagunita.stanford.edu/c4x/Engineering/CS-224N/asset/slp4.pdf)
