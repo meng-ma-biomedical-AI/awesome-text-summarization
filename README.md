@@ -8,6 +8,9 @@
 5. [Processed CNN and Daily Mail](https://github.com/danqi/rc-cnn-dailymail) datasets are just simply concatenation of all data instances and keeping document, question and answer only for their inputs.
 6. [Large Scale Chinese Short Text Summarization Dataset（LCSTS）](http://icrc.hitsz.edu.cn/Article/show/139.html): This corpus is constructed from the Chinese microblogging website SinaWeibo. It consists of over 2 million real Chinese short texts with short summaries given by the writer of each text.
 7. Ziqiang Cao, Chengyao Chen, Wenjie Li, Sujian Li, Furu Wei, Ming Zhou. [TGSum: Build Tweet Guided Multi-Document Summarization Dataset](https://arxiv.org/abs/1511.08417v1). arXiv:1511.08417, 2015.
+7. [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/) a new reading comprehension dataset, consisting of questions posed by crowdworkers on a set of Wikipedia articles, where the answer to every question is a segment of text, or span, from the corresponding reading passage. 
+8. Wei He, Kai Liu, Yajuan Lyu, Shiqi Zhao, Xinyan Xiao, Yuan Liu, Yizhong Wang, Hua Wu, Qiaoqiao She, Xuan Liu, Tian Wu, Haifeng Wang. [DuReader: a Chinese Machine Reading Comprehension Dataset from Real-world Applications](https://arxiv.org/abs/1711.05073). arXiv:1711.05073, 2017. The **DuReader Dataset** and **DuReader Baseline Systems** could be downloaded from the [DuReader github](https://github.com/baidu/DuReader).
+9. [MS-MARCO](http://www.msmarco.org/) is a new large scale dataset for reading comprehension and question answering.
 
 ### Text Summarization Software
 1. [sumeval](https://github.com/chakki-works/sumeval) implemented in Python is a well tested & multi-language evaluation framework for text summarization.
@@ -85,7 +88,7 @@
 15. Rakesh Verma, Daniel Lee. [Extractive Summarization: Limits, Compression, Generalized Model and Heuristics](https://arxiv.org/abs/1704.05550v1). arXiv:1704.05550, 2017.
 15. Ed Collins, Isabelle Augenstein, Sebastian Riedel. [A Supervised Approach to Extractive Summarisation of Scientific Papers](https://arxiv.org/abs/1706.03946v1). arXiv:1706.03946, 2017.
 15. Sukriti Verma, Vagisha Nidhi. [Extractive Summarization using Deep Learning](https://arxiv.org/abs/1708.04439v1). arXiv:1708.04439, 2017.
-15. Parth Mehta, Gaurav Arora, Prasenjit Majumder. [Attention based Sentence Extraction from Scientific Articles using Pseudo-Labeled data](https://arxiv.org/abs/1802.04675v1). 	arXiv:1802.04675, 2018.
+	5. Parth Mehta, Gaurav Arora, Prasenjit Majumder. [Attention based Sentence Extraction from Scientific Articles using Pseudo-Labeled data](https://arxiv.org/abs/1802.04675v1). 	arXiv:1802.04675, 2018.
 16. Shashi Narayan, Shay B. Cohen, Mirella Lapata. [Ranking Sentences for Extractive Summarization with Reinforcement Learning](https://arxiv.org/abs/1802.08636v1). arXiv:1802.08636, NAACL, 2018.
 
 ### Abstractive Text Summarization
@@ -146,7 +149,7 @@
 19. Marta Aparício, Paulo Figueiredo, Francisco Raposo, David Martins de Matos, Ricardo Ribeiro, Luís Marujo. [Summarization of Films and Documentaries Based on Subtitles and Scripts](https://arxiv.org/abs/1506.01273v3). arXiv:1506.01273, 2015.
 19. Luís Marujo, Ricardo Ribeiro, David Martins de Matos, João P. Neto, Anatole Gershman, Jaime Carbonell. [Extending a Single-Document Summarizer to Multi-Document: a Hierarchical Approach](https://arxiv.org/abs/1507.02907v1). arXiv:1507.02907, 2015.
 20. Xiaojun Wan, Yansong Feng and Weiwei Sun. [Automatic Text Generation: Research Progress and Future Trends](http://www.icst.pku.edu.cn/lcwm/wanxj/files/TextGenerationSurvey.pdf). Book Chapter in CCF 2014-2015 Annual Report on Computer Science and Technology in China (In Chinese), 2015.
-20. Xiaojun Wan, Ziqiang Cao, Furu Wei, Sujian Li, Ming Zhou. [Multi-Document Summarization via Discriminative Summary Reranking](https://arxiv.org/abs/1507.02062v1). 	arXiv:1507.02062, 2015.
+	0. Xiaojun Wan, Ziqiang Cao, Furu Wei, Sujian Li, Ming Zhou. [Multi-Document Summarization via Discriminative Summary Reranking](https://arxiv.org/abs/1507.02062v1). 	arXiv:1507.02062, 2015.
 21. Gulcehre, Caglar, Sungjin Ahn, Ramesh Nallapati, Bowen Zhou, and Yoshua Bengio. [Pointing the Unknown Words](http://arxiv.org/abs/1603.08148). arXiv:1603.08148, 2016.
 22. Jiatao Gu, Zhengdong Lu, Hang Li, Victor O.K. Li. [Incorporating Copying Mechanism in Sequence-to-Sequence Learning](https://arxiv.org/abs/1603.06393). arXiv:1603.06393, ACL, 2016.
     * They addressed an important problem in sequence-to-sequence (Seq2Seq) learning referred to as copying, in which certain segments in the input sequence are selectively replicated in the output sequence. In this paper, they incorporated copying into neural network-based Seq2Seq learning and propose a new model called CopyNet with encoder-decoder structure. CopyNet can nicely integrate the regular way of word generation in the decoder with the new copying mechanism which can choose sub-sequences in the input sequence and put them at proper places in the output sequence.
@@ -157,7 +160,7 @@
 26. Lu Wang, Hema Raghavan, Vittorio Castelli, Radu Florian, Claire Cardie. [A Sentence Compression Based Framework to Query-Focused Multi-Document Summarization](https://arxiv.org/abs/1606.07548v1). arXiv:1606.07548, 2016.
 26. Milad Moradi, Nasser Ghadiri. [Different approaches for identifying important concepts in probabilistic biomedical text summarization](https://arxiv.org/abs/1605.02948v3). arXiv:1605.02948, 2016.
 27. Kikuchi, Yuta, Graham Neubig, Ryohei Sasano, Hiroya Takamura, and Manabu Okumura. [Controlling Output Length in Neural Encoder-Decoders](https://arxiv.org/abs/1609.09552). arXiv:1609.09552, 2016.
-28. Qian Chen, Xiaodan Zhu, Zhenhua Ling, Si Wei and Hui Jiang. [Distraction-Based Neural Networks for Document Summarization](https://arxiv.org/abs/1610.08462). 	arXiv:1610.08462, IJCAI, 2016.
+	8. Qian Chen, Xiaodan Zhu, Zhenhua Ling, Si Wei and Hui Jiang. [Distraction-Based Neural Networks for Document Summarization](https://arxiv.org/abs/1610.08462). 	arXiv:1610.08462, IJCAI, 2016.
 29. Wang, Lu, and Wang Ling. [Neural Network-Based Abstract Generation for Opinions and Arguments](http://www.ccs.neu.edu/home/luwang/papers/NAACL2016.pdf). NAACL, 2016.
 30. Yishu Miao, Phil Blunsom.  [Language as a Latent Variable: Discrete Generative Models for Sentence Compression](http://arxiv.org/abs/1609.07317).  EMNLP, 2016.
 31. Takase, Sho, Jun Suzuki, Naoaki Okazaki, Tsutomu Hirao, and Masaaki Nagata. [Neural headline generation on abstract meaning representation](https://www.aclweb.org/anthology/D/D16/D16-1112.pdf).  EMNLP, 1054-1059, 2016.
@@ -178,7 +181,7 @@
 45. Michihiro Yasunaga, Rui Zhang, Kshitijh Meelu, Ayush Pareek, Krishnan Srinivasan, Dragomir Radev. [Graph-based Neural Multi-Document Summarization](https://arxiv.org/abs/1706.06681v3). arXiv:1706.06681, CoNLL, 2017.
 45. Abeed Sarker, Diego Molla, Cecile Paris. [Automated text summarisation and evidence-based medicine: A survey of two domains](https://arxiv.org/abs/1706.08162v1). arXiv:1706.08162, 2017.
 45. Mehdi Allahyari, Seyedamin Pouriyeh, Mehdi Assefi, Saeid Safaei, Elizabeth D. Trippe, Juan B. Gutierrez, Krys Kochut. [Text Summarization Techniques: A Brief Survey](https://arxiv.org/abs/1707.02268). arXiv:1707.02268, 2017.
-45. Demian Gholipour Ghalandari. [Revisiting the Centroid-based Method: A Strong Baseline for Multi-Document Summarization](https://arxiv.org/abs/1708.07690v1). 	arXiv:1708.07690, EMNLP, 2017.
+	5. Demian Gholipour Ghalandari. [Revisiting the Centroid-based Method: A Strong Baseline for Multi-Document Summarization](https://arxiv.org/abs/1708.07690v1). 	arXiv:1708.07690, EMNLP, 2017.
 46. Shuming Ma, Xu Sun. [A Semantic Relevance Based Neural Network for Text Summarization and Text Simplification](https://arxiv.org/abs/1710.02318v1). arXiv:1710.02318, 2017.
 46. Kaustubh Mani, Ishan Verma, Lipika Dey. [Multi-Document Summarization using Distributed Bag-of-Words Model](https://arxiv.org/abs/1710.02745v1). arXiv:1710.02745, 2017.
 46. Liqun Shao, Hao Zhang, Ming Jia, Jie Wang. [Efficient and Effective Single-Document Summarizations and A Word-Embedding Measurement of Quality](https://arxiv.org/abs/1710.00284v1). arXiv:1710.00284, KDIR, 2017.
@@ -210,21 +213,24 @@
 4. Haibing Wu, Yiwei Gu, Shangdi Sun and Xiaodong Gu. [Aspect-based Opinion Summarization with Convolutional Neural Networks](https://arxiv.org/abs/1511.09128). 2015.
 5. Ozan Irsoy and Claire Cardie. [Opinion Mining with Deep Recurrent Neural Networks](https://www.cs.cornell.edu/~oirsoy/files/emnlp14drnt.pdf). In EMNLP, 2014.
 
-### Reading Comprehension
+### Machine Reading Comprehension
 1. Karl Moritz Hermann, Tomas Kocisky, Edward Grefenstette, Lasse Espeholt, Will Kay, Mustafa Suleyman, and Phil Blunsom. [Teaching machines to read and comprehend](http://papers.nips.cc/paper/5945-teaching-machines-to-read-and-comprehend). NIPS, 2015. The source code in Python is [DeepMind-Teaching-Machines-to-Read-and-Comprehend](https://github.com/thomasmesnard/DeepMind-Teaching-Machines-to-Read-and-Comprehend).
 2. Hill, Felix, Antoine Bordes, Sumit Chopra, and Jason Weston. [The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations](http://arxiv.org/abs/1511.02301). arXiv:1511.02301, 2015.
 3. Kadlec, Rudolf, Martin Schmid, Ondrej Bajgar, and Jan Kleindienst. [Text Understanding with the Attention Sum Reader Network](http://arxiv.org/abs/1603.01547). arXiv:1603.01547, 2016.
-4. Danqi Chen, Jason Bolton and Christopher D. Manning. [A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task](https://arxiv.org/abs/1606.02858). 	arXiv:1606.02858, ACL, 2016. The source code in Python is [rc-cnn-dailymail](https://github.com/danqi/rc-cnn-dailymail).
+	. Danqi Chen, Jason Bolton and Christopher D. Manning. [A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task](https://arxiv.org/abs/1606.02858). 	arXiv:1606.02858, ACL, 2016. The source code in Python is [rc-cnn-dailymail](https://github.com/danqi/rc-cnn-dailymail).
 5. Dhingra, Bhuwan, Hanxiao Liu, William W. Cohen, and Ruslan Salakhutdinov. [Gated-Attention Readers for Text Comprehension](http://arxiv.org/abs/1606.01549). arXiv:1606.01549, 2016.
 6. Sordoni, Alessandro, Phillip Bachman, and Yoshua Bengio. [Iterative Alternating Neural Attention for Machine Reading](http://arxiv.org/abs/1606.02245). arXiv:1606.02245, 2016.
 7. Trischler, Adam, Zheng Ye, Xingdi Yuan, and Kaheer Suleman. [Natural Language Comprehension with the EpiReader](http://arxiv.org/abs/1606.02270). arXiv:1606.02270, 2016.
 8. Yiming Cui, Zhipeng Chen, Si Wei, Shijin Wang, Ting Liu, Guoping Hu. [Attention-over-Attention Neural Networks for Reading Comprehension](http://arxiv.org/abs/1607.04423). arXiv:1607.04423, 2016.
 9. Yiming Cui, Ting Liu, Zhipeng Chen, Shijin Wang, Guoping Hu. [Consensus Attention-based Neural Networks for Chinese Reading Comprehension](https://arxiv.org/abs/1607.02250). arXiv:1607.02250, 2016.
+9. Shuohang Wang, Jing Jiang. [Machine Comprehension Using Match-LSTM and Answer Pointer](https://arxiv.org/abs/1608.07905). arXiv:1608.07905, 2016.
+10. Yelong Shen, Po-Sen Huang, Jianfeng Gao, Weizhu Chen. [ReasoNet: Learning to Stop Reading in Machine Comprehension](https://arxiv.org/abs/1609.05284). arXiv:1609.05284, 2016.
 10. Daniel Hewlett, Alexandre Lacoste, Llion Jones, Illia Polosukhin, Andrew Fandrianto, Jay Han, Matthew Kelcey and David Berthelot. [WIKIREADING: A Novel Large-scale Language Understanding Task over Wikipedia](http://www.aclweb.org/anthology/P/P16/P16-1145.pdf). ACL, 1535-1545, 2016.
 10. Xinya Du, Junru Shao, Claire Cardie. [Learning to Ask: Neural Question Generation for Reading Comprehension](https://arxiv.org/abs/1705.00106v1). arXiv:1705.00106, 2017.
 11. Minghao Hu, Yuxing Peng, Xipeng Qiu. [Mnemonic Reader for Machine Comprehension](https://arxiv.org/abs/1705.02798). arXiv:1705.02798, 2017.
 12. Wenhui Wang, Nan Yang, Furu Wei, Baobao Chang and Ming Zhou. [R-NET: Machine Reading Comprehension with Self-matching Networks](https://www.microsoft.com/en-us/research/publication/mcr/). ACL, 2017.
 13. Xingdi Yuan, Tong Wang, Caglar Gulcehre, Alessandro Sordoni, Philip Bachman, Sandeep Subramanian, Saizheng Zhang, Adam Trischler. [Machine Comprehension by Text-to-Text Neural Question Generation](https://arxiv.org/abs/1705.02012v2). arXiv:1705.02012, 2017. 
+13. Chuanqi Tan, Furu Wei, Nan Yang, Bowen Du, Weifeng Lv, Ming Zhou. [S-Net: From Answer Extraction to Answer Generation for Machine Reading Comprehension](https://arxiv.org/abs/1706.04815). arXiv:1706.04815, 2017.
 14. Zichao Li, Xin Jiang, Lifeng Shang, Hang Li. [Paraphrase Generation with Deep Reinforcement Learning](https://arxiv.org/abs/1711.00279v2). arXiv:1711.00279, 2017.
 15. Tomáš Kočiský, Jonathan Schwarz, Phil Blunsom, Chris Dyer, Karl Moritz Hermann, Gábor Melis, Edward Grefenstette. [The NarrativeQA Reading Comprehension Challenge](https://arxiv.org/abs/1712.07040v1). arXiv:1712.07040, 2017. 
 
