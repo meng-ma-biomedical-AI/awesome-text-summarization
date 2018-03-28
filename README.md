@@ -1,3 +1,10 @@
+# awesome-text-summarization
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+
+A curated list of resources dedicated to text summarization
+
+## Contents
+
 ### Corpus
 1. [Opinosis dataset](http://kavita-ganesan.com/opinosis-opinion-dataset) contains 51 articles. Each article is about a product’s feature, like iPod’s Battery Life, etc. and is a collection of reviews by customers who purchased that product. Each article in the dataset has 5 manually written “gold” summaries. Usually the 5 gold summaries are different but they can also be the same text repeated 5 times.
 2. [DUC](http://duc.nist.gov/)
@@ -37,6 +44,7 @@
 #### Word/Sentence Vectorization
 1. [Word2Vec Resources](http://mccormickml.com/2016/04/27/word2vec-resources/): This is a post with links to and descriptions of word2vec tutorials, papers, and implementations.
 2. [Word embeddings: how to transform text into numbers](https://monkeylearn.com/blog/word-embeddings-transform-text-numbers/)
+2. [GloVe: Global Vectors for Word Representation](https://nlp.stanford.edu/projects/glove/) an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus.
 3. Ledell Wu, Adam Fisch, Sumit Chopra, Keith Adams, Antoine Bordes, Jason Weston. [StarSpace: Embed All The Things](https://arxiv.org/abs/1709.03856). arXiv:1709.03856, 2017. The source code in C++11 is [StarSpace] (https://github.com/facebookresearch/Starspace/).
 4. Piotr Bojanowski, Edouard Grave, Armand Joulin, Tomas Mikolov. [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606). arXiv:1607.04606. 2017. The souce code in C++11 is [fastText](https://github.com/facebookresearch/fastText), which is a library for efficient learning of word representations and sentence classification.
 5. Alexis Conneau, Guillaume Lample, Marc'Aurelio Ranzato, Ludovic Denoyer and Herv{\'e} J{\'e}gou. [Word Translation Without Parallel Data](https://arxiv.org/abs/1710.04087). arXiv:1710.04087, 2017. The source code in Python is [MUSE](https://github.com/facebookresearch/MUSE), which is a library for multilingual unsupervised or supervised word embeddings.
@@ -75,8 +83,9 @@
    * LexRank uses IDF-modified Cosine as the similarity measure between two sentences. This similarity is used as weight of the graph edge between two sentences. LexRank also incorporates an intelligent post-processing step which makes sure that top sentences chosen for the summary are not too similar to each other.
 9. [Latent Semantic Analysis(LSA) Tutorial](https://technowiki.wordpress.com/2011/08/27/latent-semantic-analysis-lsa-tutorial/).
 10. Josef Steinberger and Karel Jezek. [Using Latent Semantic Analysis in Text Summarization and Summary Evaluation](http://www.kiv.zcu.cz/~jstein/publikace/isim2004.pdf). Proc. ISIM’04, 2004.
-11. Josef Steinberger, Massimo Poesio, Mijail A Kabadjov and Karel Ježek. [Two uses of anaphora resolution in summarization](http://www.sensei-conversation.eu/wp-content/uploads/files/IPMpaper_official.pdf). Information Processing & Management, 2007.
 12. Josef Steinberger and Karel Ježek. [Text summarization and singular value decomposition](https://www.researchgate.net/profile/Karel_Jezek2/publication/226424326_Text_Summarization_and_Singular_Value_Decomposition/links/57233c1308ae586b21d87e66/Text-Summarization-and-Singular-Value-Decomposition.pdf). International Conference on Advances in Information Systems, 2004.
+12. Josef Steinberger, Massimo Poesio, Mijail A Kabadjov and Karel Ježek. [Two uses of anaphora resolution in summarization](http://www.sensei-conversation.eu/wp-content/uploads/files/IPMpaper_official.pdf). Information Processing & Management, 2007.
+12. James Clarke and Mirella Lapata. [Modelling Compression with Discourse Constraints](http://jamesclarke.net/media/papers/clarke-lapata-emnlp07.pdf). EMNLP-CoNLL, 2007.
 13. Dan Gillick and Benoit Favre. [A Scalable Global Model for Summarization](https://pdfs.semanticscholar.org/a1a2/748e68d019815f1107fa19b0ab628b63928a.pdf). ACL, 2009.
 14. Ani Nenkova and Kathleen McKeown. [Automatic summarization](https://www.cis.upenn.edu/~nenkova/1500000015-Nenkova.pdf).
    Foundations and Trend in Information Retrieval, 2011. [The slides](https://www.fosteropenscience.eu/sites/default/files/pdf/2932.pdf) are also available.
@@ -136,6 +145,7 @@
 16. Mohsen Pourvali, Mohammad Saniee Abadeh. [Automated Text Summarization Base on Lexicales Chain and graph Using of WordNet and Wikipedia Knowledge Base](https://arxiv.org/abs/1203.3586v1). arXiv:1203.3586, 2012.
 9. PadmaPriya, G., and K. Duraiswamy. [An Approach For Text Summarization Using Deep Learning Algorithm](http://thescipub.com/PDF/jcssp.2014.1.9.pdf). Journal of Computer Science 10, no. 1 (2013): 1-9.
 9. Rushdi Shams, M.M.A. Hashem, Afrina Hossain, Suraiya Rumana Akter, Monika Gope. [Corpus-based Web Document Summarization using Statistical and Linguistic Approach](https://arxiv.org/abs/1304.2476v1). arXiv:1304.2476, Procs. of the IEEE International Conference on Computer and Communication Engineering (ICCCE10), pp. 115-120, Kuala Lumpur, Malaysia, May 11-13, (2010).
+9. Juan-Manuel Torres-Moreno. [Beyond Stemming and Lemmatization: Ultra-stemming to Improve Automatic Text Summarization](https://arxiv.org/abs/1209.3126). arXiv:1209.3126, 2012.
 8. Rioux, Cody, Sadid A. Hasan, and Yllias Chali. [Fear the REAPER: A System for Automatic Multi-Document Summarization with Reinforcement Learning](http://emnlp2014.org/papers/pdf/EMNLP2014075.pdf). In EMNLP, pp. 681-690. 2014.[not neural-based methods]
 9. Fatma El-Ghannam, Tarek El-Shishtawy. [Multi-Topic Multi-Document Summarizer](https://arxiv.org/abs/1401.0640v1). arXiv:1401.0640, 2014.
 10. Denil, Misha, Alban Demiraj, and Nando de Freitas. [Extraction of Salient Sentences from Labelled Documents](http://arxiv.org/abs/1412.6815). arXiv:1412.6815,  2014.
@@ -231,6 +241,7 @@
 12. Wenhui Wang, Nan Yang, Furu Wei, Baobao Chang and Ming Zhou. [R-NET: Machine Reading Comprehension with Self-matching Networks](https://www.microsoft.com/en-us/research/publication/mcr/). ACL, 2017.
 13. Xingdi Yuan, Tong Wang, Caglar Gulcehre, Alessandro Sordoni, Philip Bachman, Sandeep Subramanian, Saizheng Zhang, Adam Trischler. [Machine Comprehension by Text-to-Text Neural Question Generation](https://arxiv.org/abs/1705.02012v2). arXiv:1705.02012, 2017. 
 13. Chuanqi Tan, Furu Wei, Nan Yang, Bowen Du, Weifeng Lv, Ming Zhou. [S-Net: From Answer Extraction to Answer Generation for Machine Reading Comprehension](https://arxiv.org/abs/1706.04815). arXiv:1706.04815, 2017.
+13. Christopher Clark, Matt Gardner. [Simple and Effective Multi-Paragraph Reading Comprehension](https://arxiv.org/abs/1710.10723). arXiv:1710.10723, 2017. The code written in Python is [document-qa](https://github.com/allenai/document-qa).
 14. Zichao Li, Xin Jiang, Lifeng Shang, Hang Li. [Paraphrase Generation with Deep Reinforcement Learning](https://arxiv.org/abs/1711.00279v2). arXiv:1711.00279, 2017.
 15. Tomáš Kočiský, Jonathan Schwarz, Phil Blunsom, Chris Dyer, Karl Moritz Hermann, Gábor Melis, Edward Grefenstette. [The NarrativeQA Reading Comprehension Challenge](https://arxiv.org/abs/1712.07040v1). arXiv:1712.07040, 2017. 
 
